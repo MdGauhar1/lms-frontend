@@ -1,0 +1,82 @@
+<div class="min-h-screen grid lg:grid-cols-2 bg-black text-white">
+
+  <!-- LEFT SIDE BRAND / IMAGE -->
+  <div class="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 p-12">
+    <h1 class="text-5xl font-bold mb-6">Login Here ✔️</h1>
+    <p class="text-gray-300 text-lg text-center max-w-md">
+      Continue learning, track progress and unlock new skills.
+    </p>
+  </div>
+
+  <!-- RIGHT SIDE FORM -->
+  <div class="flex items-center justify-center p-6 bg-gradient-to-br from-slate-950 via-slate-900 to-black">
+
+    <!-- ANIMATED GRADIENT BORDER -->
+    <div class="relative w-full max-w-md p-[1px] rounded-2xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-pulse">
+
+      <!-- GLASS CARD -->
+      <div class="bg-slate-900/90 backdrop-blur-xl rounded-2xl p-8 space-y-6">
+
+        <!-- HEADER -->
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight">Sign In</h2>
+          <p class="text-gray-400 text-sm">
+            Login to continue your learning journey
+          </p>
+        </div>
+
+        <!-- USERNAME FLOATING -->
+        <div class="relative">
+          <input
+            [(ngModel)]="username"
+            placeholder=" "
+            class="peer w-full px-4 pt-6 pb-2 rounded-xl bg-slate-800 border border-white/10 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+          <label
+            class="absolute left-4 top-2 text-xs text-gray-400 transition-all
+            peer-placeholder-shown:top-4
+            peer-placeholder-shown:text-sm
+            peer-focus:top-2
+            peer-focus:text-xs">
+            Username
+          </label>
+        </div>
+
+        <!-- PASSWORD FLOATING + TOGGLE -->
+        <div class="relative">
+          <input
+            [(ngModel)]="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder=" "
+            class="peer w-full px-4 pt-6 pb-2 rounded-xl bg-slate-800 border border-white/10 text-white focus:ring-2 focus:ring-indigo-500 outline-none"
+          />
+
+          <label
+            class="absolute left-4 top-2 text-xs text-gray-400 transition-all
+            peer-placeholder-shown:top-4
+            peer-placeholder-shown:text-sm
+            peer-focus:top-2
+            peer-focus:text-xs">
+            Password
+          </label>
+
+          <button
+            type="button"
+            (click)="showPassword = !showPassword"
+            class="absolute right-3 top-4 text-gray-400 hover:text-white">
+            View ◉
+          </button>
+        </div>
+
+        <!-- BUTTON -->
+        <button
+          (click)="login()"
+          class="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg">
+          Sign In →
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>

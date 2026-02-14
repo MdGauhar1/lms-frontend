@@ -1,0 +1,100 @@
+<div class="min-h-screen grid lg:grid-cols-2 bg-black text-white">
+
+  <!-- LEFT SIDE IMAGE / BRAND -->
+  <div class="hidden lg:flex flex-col justify-center items-center bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 p-12">
+    <h1 class="text-5xl font-bold mb-6">Register Here 📕</h1>
+    <p class="text-gray-300 text-lg text-center max-w-md">
+      Build skills. Earn certificates. Become unstoppable.
+    </p>
+  </div>
+
+  <!-- RIGHT SIDE FORM -->
+  <div class="flex items-center justify-center p-6 bg-gradient-to-br from-slate-950 via-slate-900 to-black">
+
+    <!-- GLASS CARD -->
+    <div
+      class="relative w-full max-w-md p-[1px] rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-pulse">
+
+      <div class="bg-slate-900/90 backdrop-blur-xl rounded-2xl p-8 space-y-6">
+
+        <!-- HEADER -->
+        <div class="text-center">
+          <h2 class="text-3xl font-bold">Create Account</h2>
+          <p class="text-gray-400 text-sm">Start your learning journey</p>
+        </div>
+
+        <!-- USERNAME FLOATING -->
+        <div class="relative">
+          <input
+            [(ngModel)]="username"
+            placeholder=" "
+            class="peer w-full px-4 pt-6 pb-2 rounded-xl bg-slate-800 border border-white/10 focus:ring-2 focus:ring-indigo-500 outline-none"/>
+          <label
+            class="absolute left-4 top-2 text-xs text-gray-400 transition-all
+            peer-placeholder-shown:top-4
+            peer-placeholder-shown:text-sm
+            peer-focus:top-2
+            peer-focus:text-xs">
+            Username
+          </label>
+        </div>
+
+        <!-- PASSWORD FLOATING + TOGGLE -->
+        <div class="relative">
+          <input
+            [(ngModel)]="password"
+            [type]="showPassword ? 'text' : 'password'"
+            (input)="checkStrength()"
+            placeholder=" "
+            class="peer w-full px-4 pt-6 pb-2 rounded-xl bg-slate-800 border border-white/10 focus:ring-2 focus:ring-purple-500 outline-none"/>
+
+          <label
+            class="absolute left-4 top-2 text-xs text-gray-400 transition-all
+            peer-placeholder-shown:top-4
+            peer-placeholder-shown:text-sm
+            peer-focus:top-2
+            peer-focus:text-xs">
+            Password
+          </label>
+
+          <button
+            type="button"
+            (click)="showPassword=!showPassword"
+            class="absolute right-3 top-4 text-gray-400 hover:text-white">
+            View ◉
+          </button>
+        </div>
+
+        <!-- PASSWORD STRENGTH -->
+        <div>
+          <div class="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
+            <div
+              class="h-full transition-all duration-300 bg-gradient-to-r from-red-500 via-yellow-400 to-green-500"
+              [style.width.%]="passwordStrength">
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-1">
+            Strength: {{ strengthLabel }}
+          </p>
+        </div>
+
+        <!-- ROLE -->
+        <select
+          [(ngModel)]="role"
+          class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-white/10 focus:ring-2 focus:ring-pink-500">
+          <option value="ROLE_USER">User</option>
+          <option value="ROLE_ADMIN">Admin</option>
+        </select>
+
+        <!-- BUTTON -->
+        <button
+          (click)="register()"
+          class="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 hover:scale-[1.02] active:scale-[0.98] transition">
+          Create Account →
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>

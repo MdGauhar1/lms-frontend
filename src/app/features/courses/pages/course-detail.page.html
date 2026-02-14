@@ -1,0 +1,133 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 text-white transition-colors">
+
+  <!-- 🦴 SKELETON LOADER -->
+  <div
+    *ngIf="!course"
+    class="max-w-5xl mx-auto animate-pulse space-y-6"
+  >
+    <div class="h-10 w-2/3 bg-slate-700 rounded"></div>
+    <div class="h-24 bg-slate-700 rounded"></div>
+    <div class="h-40 bg-slate-700 rounded-xl"></div>
+    <div class="h-20 bg-slate-700 rounded"></div>
+  </div>
+
+  <!-- COURSE DETAILS -->
+  <div *ngIf="course" class="max-w-6xl mx-auto space-y-10">
+
+    <!-- 🎬 HERO SECTION -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- INFO -->
+      <div class="space-y-4">
+        <span class="inline-block px-4 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">
+          Bestseller
+        </span>
+
+        <h2 class="text-4xl font-extrabold leading-tight">
+          {{ course.title }}
+        </h2>
+
+        <p class="text-gray-400">
+          {{ course.description }}
+        </p>
+
+        <!-- META -->
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+          <span>⏱ {{ course.duration }} hours</span>
+          <span>⭐ 4.6 (12,340 reviews)</span>
+          <span>👥 85k learners</span>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="flex items-center gap-4 pt-4">
+          <app-enroll [courseId]="course.id"></app-enroll>
+
+          <button
+            class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition"
+          >
+            Preview
+          </button>
+        </div>
+      </div>
+
+      <!-- 🎬 VIDEO PREVIEW -->
+      <div class="rounded-2xl overflow-hidden shadow-2xl">
+        <iframe
+          class="w-full h-64 lg:h-full"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="Course Preview"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+    </div>
+
+    <!-- ⭐ RATINGS & REVIEWS -->
+    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
+      <h3 class="text-2xl font-semibold mb-4">Student Reviews</h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="bg-slate-800 p-4 rounded-xl">
+          <div class="flex items-center gap-2 text-yellow-400 mb-2">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="text-sm text-gray-400">
+            Amazing course! Explained everything clearly.
+          </p>
+          <span class="text-xs text-gray-500 mt-2 block">
+            — Ahsan Khan
+          </span>
+        </div>
+
+        <div class="bg-slate-800 p-4 rounded-xl">
+          <div class="flex items-center gap-2 text-yellow-400 mb-2">
+            ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="text-sm text-gray-400">
+            Very helpful for beginners.
+          </p>
+          <span class="text-xs text-gray-500 mt-2 block">
+            — Rahul Verma
+          </span>
+        </div>
+
+        <div class="bg-slate-800 p-4 rounded-xl">
+          <div class="flex items-center gap-2 text-yellow-400 mb-2">
+            ⭐ ⭐ ⭐ ⭐ ⭐
+          </div>
+          <p class="text-sm text-gray-400">
+            Worth every minute!
+          </p>
+          <span class="text-xs text-gray-500 mt-2 block">
+            — Sana Ali
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+
+      <!-- ✅ ADD HERE: LESSONS -->
+        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
+        <h3 class="text-2xl font-semibold mb-4">
+          Course Lessons
+       </h3>
+
+       <app-lesson-list [courseId]="course.id"></app-lesson-list>
+      </div>
+
+    <!-- 📈 PROGRESS -->
+    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
+      <h3 class="text-2xl font-semibold mb-4">
+        Your Progress
+      </h3>
+
+      <app-progress
+        [userId]="userId"
+        [courseId]="course.id">
+      </app-progress>
+    </div>
+
+  </div>
+</div>

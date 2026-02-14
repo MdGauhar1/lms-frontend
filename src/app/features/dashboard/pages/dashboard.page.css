@@ -1,0 +1,6 @@
+/* Tailwind is doing most styling */
+/* Keep this file for future custom styles */
+
+:host {
+  display: block;
+}

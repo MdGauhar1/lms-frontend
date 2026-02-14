@@ -1,0 +1,93 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-8">
+
+  <!-- PAGE HEADER -->
+  <div class="max-w-7xl mx-auto mb-10">
+    <h2 class="text-4xl font-extrabold tracking-tight">
+      Courses
+    </h2>
+    <p class="text-gray-400 mt-1">
+      Hand-picked learning just for you
+    </p>
+  </div>
+
+  <!-- 🦴 SKELETON LOADER -->
+  <div
+    *ngIf="courses.length === 0"
+    class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+  >
+    <div
+      *ngFor="let i of [1,2,3,4,5,6]"
+      class="animate-pulse bg-white/5 backdrop-blur-xl border border-white/10 h-72 rounded-2xl"
+    ></div>
+  </div>
+
+  <!-- 🎬 COURSE GRID -->
+  <div
+    *ngIf="courses.length > 0"
+    class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+  >
+
+    <!-- COURSE CARD -->
+    <div
+      *ngFor="let c of courses"
+      class="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:border-white/20 hover:scale-[1.03] transition-all duration-300"
+    >
+
+      <!-- THUMBNAIL -->
+      <div class="h-40 bg-gradient-to-br from-indigo-500/80 to-purple-600/80 relative">
+          <!-- big icon -->
+          <i class="ri-rocket-2-line absolute right-4 text-[35px] opacity-10"></i>
+        <span
+          class="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-black/70 text-white"
+        >
+          ⭐ Bestseller
+        </span>
+          <i class="ri-edit-2-line text-1.5xl opacity-90"></i>
+          <i class="ri-book-2-line text-3xl opacity-90"></i>
+          <i class="ri-lightbulb-line text-5xl opacity-90"></i>
+          <i class="ri-graduation-cap-line text-7xl opacity-90"></i>
+          <i class="ri-medal-line text-9xl opacity-90"></i>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="p-5">
+
+        <!-- TITLE -->
+        <h3 class="text-lg font-bold text-white mb-1">
+          {{ c.title }}
+        </h3>
+
+        <!-- DESCRIPTION -->
+        <p class="text-sm text-gray-400 line-clamp-2">
+          {{ c.description }}
+        </p>
+
+        <!-- RATING -->
+        <div class="flex items-center gap-1 mt-3 text-yellow-400">
+          ⭐ ⭐ ⭐ ⭐ <span class="text-gray-400 text-sm ml-1">4.5</span>
+        </div>
+
+        <!-- ACTION -->
+        <div class="mt-5 flex justify-between items-center">
+          <span
+            class="px-3 py-1 text-xs rounded-full bg-green-500/20 text-green-400 font-semibold"
+          >
+            Free
+          </span>
+
+          <a
+            [routerLink]="['/courses', c.id]"
+            class="text-blue-400 font-semibold hover:text-blue-300 transition"
+          >
+            View Details →
+          </a>
+
+          <app-enroll [courseId]="c.id"></app-enroll>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

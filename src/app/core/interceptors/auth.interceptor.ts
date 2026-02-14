@@ -1,0 +1,23 @@
+// src/app/core/interceptors/auth.interceptor.ts
+import { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
+
+
+
+
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId');
+
+  if (token) {
+    req = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`,
+        'X-USER-ID': userId ?? ''
+      }
+    });
+  }
+
+  return next(req);
+};
